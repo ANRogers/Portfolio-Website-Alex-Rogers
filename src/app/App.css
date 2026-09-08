@@ -1,0 +1,351 @@
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flow-root;
+
+  background-image: url("/src/assets/stars.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 20px;
+}
+
+/* Canvas backgrounds */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Page content */
+.content {
+  position: relative;
+  z-index: 1;
+
+}
+
+.introduction {
+    position: relative;
+
+    width: 100%;
+    max-width: 25vw;
+
+    padding: 10px 10px;
+
+    text-align: left;
+
+    font-family: "Audiowide", sans-serif;
+
+    border: 2px solid #c026ff;
+    box-shadow: 0 0 10px #c026ff;
+}
+
+
+.intro p {
+    margin: 0 0 10px 5px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    color: #d8b4fe;
+
+    text-shadow:
+        0 0 5px rgba(216, 180, 254, 0.8),
+        0 0 15px rgba(168, 85, 247, 0.6);
+}
+
+
+/* Large name */
+.name h1 {
+    margin: 0;
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    /* Gradient */
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f0abfc 35%,
+        #d946ef 65%,
+        #a855f7 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    /* Glow */
+    filter:
+        drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))
+        drop-shadow(0 0 8px rgba(217, 70, 239, 0.6))
+        drop-shadow(0 0 16px rgba(168, 85, 247, 0.35));
+}
+
+
+/* Medium bio */
+.bio {
+    max-width: 540px;
+
+    margin-top: 15px;
+}
+
+.bio p {
+    margin: 0;
+
+    font-family: "Rajdhani", sans-serif;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+
+    color: #d4d4d8;
+}
+
+.section-divider {
+    border: none;
+    border-top: 2px solid #c026ff;
+    box-shadow: 0 0 10px #c026ff;
+    margin: 10px 0;
+    opacity: 1;
+    width: 100%;
+}
+
+.options{
+  font-family: 'Orbitron', sans-serif;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.option {
+    position: relative;
+    display: inline-block;
+
+    text-decoration: none;
+    color: #ffffff;
+    background: none;
+    border: none;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    padding: 5px 0;
+    padding-left: 28px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+/* > indicator */
+.option::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+
+    color: #c026ff;
+    font-size: 32px;
+
+    opacity: 0;
+    transform: translateX(-10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Animated underline */
+.option::after {
+    content: "";
+    position: absolute;
+
+    left: 28px;
+    bottom: 0;
+
+    width: calc(100% - 28px);
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #c026ff,
+        #d946ef,
+        transparent
+    );
+
+    box-shadow: 0 0 8px rgba(192, 38, 255, 0.8);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.4s ease;
+}
+
+/* Hover */
+.option:hover {
+    color: #f0abfc;
+
+    transform: translateX(12px);
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 12px rgba(217, 70, 239, 0.8),
+        0 0 25px rgba(168, 85, 247, 0.5);
+}
+
+/* Show > */
+.option:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Grow underline */
+.option:hover::after {
+    transform: scaleX(1);
+}
+
+
+
+.offcanvas.options-tabs {
+    width: 35vw !important;
+    background-color: rgba(1, 0, 2, 0.75) !important;
+    opacity: 1 !important;
+    color: white;
+}
+
+.offcanvas.options-tabs .btn-close{
+  filter: invert(45%) sepia(90%) saturate(2000%) hue-rotate(250deg);
+  font-size: 20px;
+}
+
+.offcanvas-backdrop {
+    display: none !important;
+}
+
+.project-popout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.project-popout-button .card {
+    background-color: rgba(20, 0, 30, 0.6);
+    border: 2px solid rgba(192, 38, 255, 0.4);
+    border-radius: 8px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.project-popout-button .card-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #f0abfc;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.project-popout-button .card-text {
+    color: #d4d4d8;
+    font-family: "Rajdhani", sans-serif;
+}
+
+/* Hover state */
+.project-popout-button:hover .card {
+    transform: translateY(-4px) scale(1.01);
+
+    border-color: #c026ff;
+    background-color: rgba(30, 0, 45, 0.75);
+
+    box-shadow:
+        0 0 15px rgba(192, 38, 255, 0.7),
+        0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+.project-popout-button:hover .card-title {
+    color: #ffffff;
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 12px rgba(217, 70, 239, 0.8);
+}
+
+/* Optional: focus state for keyboard users, since it's a button */
+.project-popout-button:focus-visible .card {
+    outline: none;
+    border-color: #f0abfc;
+    box-shadow: 0 0 15px rgba(240, 171, 252, 0.8);
+}
+
+/* Synthwave scrollbar - Webkit browsers (Chrome, Edge, Safari) */
+.options-tabs .offcanvas-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.options-tabs .offcanvas-body::-webkit-scrollbar-track {
+    background: rgba(20, 0, 30, 0.4);
+    border-radius: 10px;
+}
+
+.options-tabs .offcanvas-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d946ef, #c026ff, #a855f7);
+    border-radius: 10px;
+    border: 2px solid rgba(20, 0, 30, 0.4);
+
+    box-shadow:
+        0 0 6px rgba(192, 38, 255, 0.6),
+        0 0 12px rgba(168, 85, 247, 0.4);
+}
+
+.options-tabs .offcanvas-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f0abfc, #d946ef, #c026ff);
+    box-shadow:
+        0 0 10px rgba(240, 171, 252, 0.9),
+        0 0 20px rgba(192, 38, 255, 0.6);
+}
+
+/* Firefox */
+.options-tabs .offcanvas-body {
+    scrollbar-width: thin;
+    scrollbar-color: #c026ff rgba(20, 0, 30, 0.4);
+}
+
