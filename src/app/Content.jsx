@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
 
+import DndScribeContent from './projects/DndScribe.jsx'
+import ChatBotArt from './projects/ChatBotArt.jsx'
+import UniSocialWeb from "./projects/UniSocial.jsx";
+import CustomerRestOrder from "./projects/CustomerRestOrder.jsx";
+import RestEPOS from "./projects/RestEPOS.jsx";
+
 import chatbotThumbnail from '../assets/Chatbot_Thumbnail.PNG';
 import DndScribe from '../assets/DND_Scribe.PNG';
+import UniHub from '../assets/UniHub.png'
+import RestaurantThumbnail from '../assets/UWERestarunt.png'
+import EPOSThumbnail from '../assets/ResturantEPOSThumbnail.png'
+
+
+
 
 export default function Content() {
     return (
@@ -98,7 +110,7 @@ export default function Content() {
 
                             {/* ========= Discord Voice transcription & Summary Bot ========= */}
 
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Discord-Voice-Transcription">
+                            <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Discord-Voice-Transcription">
                             <div className="card mb-3" style={{ maxWidth: "540px" }} >
                             <div className="row g-0">
                                 <div className="col-md-4">
@@ -118,7 +130,7 @@ export default function Content() {
                             
                             {/* ========= Chat Bot Art Installation ========= */}
 
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Art-Exhibition-Chatbot-Website">
+                            <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Art-Exhibition-Chatbot-Website">
                             <div className="card mb-3" style={{ maxWidth: "540px" }} >
                             <div className="row g-0">
                                 <div className="col-md-4">
@@ -138,16 +150,16 @@ export default function Content() {
 
 
                             {/* ========= University Social Media Website ========= */}
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#University-Social-Media-Website">
+                            <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#University-Social-Media-Website">
                             <div className="card mb-3" style={{ maxWidth: "540px" }} >
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                <img src={chatbotThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
+                                <img src={UniHub} className="img-fluid rounded-start" alt="chatbotThumbnail" />
                                 </div>
                                     <div className="col-md-8">
                                     <div className="card-body">
                                         <h5 className="card-title">University Social Media Website</h5>
-                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p className="card-text">A university social platform for makeing posts, adding friends, photos and joining communities for clubs and events.</p>
                                         
                                     </div>
                                     </div>
@@ -157,16 +169,17 @@ export default function Content() {
 
 
                             {/* ========= Customer Restaurant Order Website ========= */}
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Customer-Restaurant-Order-Website">
+                            <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Customer-Restaurant-Order-Website">
                             <div className="card mb-3" style={{ maxWidth: "540px" }} >
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                <img src={chatbotThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
+                                <img src={RestaurantThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
                                 </div>
                                     <div className="col-md-8">
                                     <div className="card-body">
                                         <h5 className="card-title">Customer Restaurant Order Website</h5>
-                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p className="card-text"> A restaurant ordering website for browsing menus, placing orders, 
+                                            tracking progress, and making reservations.</p>
                                         
                                     </div>
                                     </div>
@@ -177,16 +190,16 @@ export default function Content() {
 
 
                             {/* ========= Restaurant EPOS System ========= */}
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Restaurant-EPOS-System">
+                            <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Restaurant-EPOS-System">
                             <div className="card mb-3" style={{ maxWidth: "540px" }} >
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                <img src={chatbotThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
+                                <img src={EPOSThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
                                 </div>
                                     <div className="col-md-8">
                                     <div className="card-body">
                                         <h5 className="card-title">Restaurant EPOS System</h5>
-                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p className="card-text">A restaurant EPOS system for managing orders, menus, reservations, and business analytics.</p>
                                         
                                     </div>
                                     </div>
@@ -195,23 +208,7 @@ export default function Content() {
                             </button>
 
 
-                            {/* ========= Travel Booking Website ========= */}
-                            <button class="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Travel-Booking-Website">
-                            <div className="card mb-3" style={{ maxWidth: "540px" }} >
-                            <div className="row g-0">
-                                <div className="col-md-4">
-                                <img src={chatbotThumbnail} className="img-fluid rounded-start" alt="chatbotThumbnail" />
-                                </div>
-                                    <div className="col-md-8">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Travel Booking Website</h5>
-                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        
-                                    </div>
-                                    </div>
-                            </div>
-                            </div>
-                            </button>
+                            
 
                             
 
@@ -226,85 +223,21 @@ export default function Content() {
                 {/* Individual Project Offcanvas */}
 
                 {/* ========= Discord Voice transcription & Summary Bot ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Discord-Voice-Transcription">
-                <div className="offcanvas-header">
-                    <h5>Discord Voice Transcription & Summary Bot</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    A Discord bot built with Node.js and Python that transcribes each speaker's voice separately during D&D sessions, 
-                    labels dialogue by character name instead of Discord username, and uses local Whisper transcription plus 
-                    GPT-generated summaries to automatically build out an Obsidian campaign wiki — creating new character, location, and item notes as 
-                    they're mentioned for the first time.
-                </div>
-                </div>
+                <DndScribeContent />
 
                 {/* ========= Art Exhibition Chatbot Website ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Art-Exhibition-Chatbot-Website">
-                <div className="offcanvas-header">
-                    <h5>Art Exhibition Chatbot Website</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    This one sits on top.
-                </div>
-                </div>
+                <ChatBotArt/>
 
                 {/* ========= University Social Media Website ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="University-Social-Media-Website">
-                <div className="offcanvas-header">
-                    <h5>University Social Media Website</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    This one sits on top.
-                </div>
-                </div>
+                <UniSocialWeb/>
 
                 {/* ========= Customer Restaurant Order Website ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Customer-Restaurant-Order-Website">
-                <div className="offcanvas-header">
-                    <h5>Customer Restaurant Order Website</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    This one sits on top.
-                </div>
-                </div>
+                <CustomerRestOrder/>
 
                 {/* ========= Restaurant EPOS System ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Restaurant-EPOS-System">
-                <div className="offcanvas-header">
-                    <h5>Restaurant EPOS System</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    This one sits on top.
-                </div>
-                </div>
+                <RestEPOS/>
 
-                {/* ========= Travel Booking Website ========= */}
-                <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Travel-Booking-Website">
-                <div className="offcanvas-header">
-                    <h5>Travel Booking Website</h5>
-                    <button type="button" className="btn-close" data-bs-toggle="offcanvas"
-                    data-bs-target="#Projects"
-                    aria-controls="Projects" />
-                </div>
-                <div className="offcanvas-body">
-                    This one sits on top.
-                </div>
-                </div>
+                
 
 
 

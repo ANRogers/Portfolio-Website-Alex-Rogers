@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
 html,
 body,
 #root {
@@ -259,6 +261,7 @@ body {
     border: none;
     padding: 0;
     margin: 0;
+    
 
     display: block;
     width: 100%;
@@ -316,6 +319,10 @@ body {
     box-shadow: 0 0 15px rgba(240, 171, 252, 0.8);
 }
 
+.offcanvas-body{
+    font-family: 'Rajdhani', sans-serif;
+}
+
 /* Synthwave scrollbar - Webkit browsers (Chrome, Edge, Safari) */
 .options-tabs .offcanvas-body::-webkit-scrollbar {
     width: 10px;
@@ -348,4 +355,83 @@ body {
     scrollbar-width: thin;
     scrollbar-color: #c026ff rgba(20, 0, 30, 0.4);
 }
+
+.options-tabs .offcanvas-body .displayimg{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.link-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.link-btn.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    
+
+    margin-top: 15px;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #f0abfc;
+    background: rgba(192, 38, 255, 0.08);
+    border: 2px solid #c026ff;
+    border-radius: 6px;
+
+    padding: 8px 18px;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.link-btn.btn i {
+    font-size: 18px;
+}
+
+.link-btn.btn:hover {
+    color: #ffffff;
+    background: rgba(192, 38, 255, 0.2);
+
+    box-shadow:
+        0 0 10px rgba(192, 38, 255, 0.7),
+        0 0 20px rgba(168, 85, 247, 0.4);
+
+    transform: translateY(-2px);
+}
+
+.link-btn.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 12px rgba(240, 171, 252, 0.9);
+}
+
+.programlangbox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+
+
+
+
+
 
