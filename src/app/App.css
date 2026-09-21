@@ -364,11 +364,20 @@ body {
     object-fit: contain;
 }
 
+.options-tabs .offcanvas-body .displayimgsmall {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 10px auto;
+}
+
 .link-btn-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 15px;
     margin-bottom: 15px;
+    gap: 15px;
 }
 
 .link-btn.btn {
@@ -427,6 +436,7 @@ body {
     justify-content: center;
     margin-bottom: 15px;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 

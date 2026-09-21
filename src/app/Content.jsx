@@ -11,6 +11,7 @@ import DndScribe from '../assets/DND_Scribe.PNG';
 import UniHub from '../assets/UniHub.png'
 import RestaurantThumbnail from '../assets/UWERestarunt.png'
 import EPOSThumbnail from '../assets/ResturantEPOSThumbnail.png'
+import AboutMe from "./AboutMe.jsx";
 
 
 
@@ -243,38 +244,7 @@ export default function Content() {
 
                 {/* ================= ABOUT ME OFFCANVAS ================= */}
 
-                <div
-                    className="offcanvas offcanvas-end options-tabs"
-                    tabIndex="-1"
-                    id="AboutMe"
-                    aria-labelledby="AboutMeLabel"
-                >
-                    <div className="offcanvas-header">
-                        <h5
-                            className="offcanvas-title"
-                            id="AboutMeLabel"
-                        >
-                            About Me
-                        </h5>
-
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="offcanvas"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-
-                    <div className="offcanvas-body">
-                        <div>
-                            <p>
-                                I'm Alex, a Computer Science graduate
-                                interested in software development and
-                                creating digital experiences.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <AboutMe/>
 
 
 
