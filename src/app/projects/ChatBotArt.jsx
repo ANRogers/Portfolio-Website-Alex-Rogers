@@ -1,9 +1,9 @@
-import conversationChat from '../../assets/ChatBot/ConversationChat.png';
-import EverAfterHome from '../../assets/ChatBot/EverafterHome.png';
-import Angryface from '../../assets/ChatBot/Angryface.png';
-import Happyface from '../../assets/ChatBot/Happyface.png';
-import Sadface from '../../assets/ChatBot/Sadface.png';
-import MobileChatPage from '../../assets/ChatBot/MobileChatPage.png';
+import conversationChat from '../../assets/ChatBot/ConversationChat.PNG';
+import EverAfterHome from '../../assets/ChatBot/EverafterHome.PNG';
+import Angryface from '../../assets/ChatBot/Angryface.PNG';
+import Happyface from '../../assets/ChatBot/Happyface.PNG';
+import Sadface from '../../assets/ChatBot/Sadface.PNG';
+import MobileChatPage from '../../assets/ChatBot/MobileChatPage.PNG';
 import UweArtTalk from '../../assets/ChatBot/UweArtTalk.jpg';
 
 

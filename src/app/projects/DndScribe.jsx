@@ -1,8 +1,8 @@
-import dndScribe from '../../assets/DND_Scribe.png'
-import scribeStart from '../../assets/DNDscribe/StartScribe.png'
-import scribeEnd from '../../assets/DNDscribe/ScribeEnd.png'
-import scribeTranscript from '../../assets/DNDscribe/ScribeTranscript.png'
-import summeriseText from '../../assets/DNDscribe/SummeriseText.png'
+import dndScribe from '../../assets/DND_Scribe.PNG'
+import scribeStart from '../../assets/DNDscribe/StartScribe.PNG'
+import scribeEnd from '../../assets/DNDscribe/ScribeEnd.PNG'
+import scribeTranscript from '../../assets/DNDscribe/ScribeTranscript.PNG'
+import summeriseText from '../../assets/DNDscribe/SummeriseText.PNG'
 
 export default function DndScribeContent() {
     return(

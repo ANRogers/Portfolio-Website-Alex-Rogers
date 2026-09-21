@@ -8,9 +8,9 @@ import RestEPOS from "./projects/RestEPOS.jsx";
 
 import chatbotThumbnail from '../assets/Chatbot_Thumbnail.PNG';
 import DndScribe from '../assets/DND_Scribe.PNG';
-import UniHub from '../assets/UniHub.png'
-import RestaurantThumbnail from '../assets/UWERestarunt.png'
-import EPOSThumbnail from '../assets/ResturantEPOSThumbnail.png'
+import UniHub from '../assets/UniHub.PNG'
+import RestaurantThumbnail from '../assets/UWERestarunt.PNG'
+import EPOSThumbnail from '../assets/ResturantEPOSThumbnail.PNG'
 import AboutMe from "./AboutMe.jsx";
 
 
