@@ -1,10 +1,10 @@
-import conversationChat from '../../assets/ChatBot/ConversationChat.PNG';
-import EverAfterHome from '../../assets/ChatBot/EverafterHome.PNG';
-import Angryface from '../../assets/ChatBot/Angryface.PNG';
-import Happyface from '../../assets/ChatBot/Happyface.PNG';
-import Sadface from '../../assets/ChatBot/Sadface.PNG';
-import MobileChatPage from '../../assets/ChatBot/MobileChatPage.PNG';
-import UweArtTalk from '../../assets/ChatBot/UweArtTalk.jpg';
+import conversationChat from '../../assets/Chatbot/ConversationChat.PNG';
+import EverAfterHome from '../../assets/Chatbot/EverafterHome.PNG';
+import Angryface from '../../assets/Chatbot/Angryface.PNG';
+import Happyface from '../../assets/Chatbot/Happyface.PNG';
+import Sadface from '../../assets/Chatbot/Sadface.PNG';
+import MobileChatPage from '../../assets/Chatbot/MobileChatPage.PNG';
+import UweArtTalk from '../../assets/Chatbot/UweArtTalk.jpg';
 
 
 export default function ChatBotArt(){
