@@ -1,83 +1,109 @@
 import { useEffect, useRef } from "react";
+
 import MouseLogo from "../assets/Mouse_Logo_Synthwave_Transparent.png";
 
 export default function MouseDVDBackground({
-  mouseSize = 150,
-  speedMultiplier = 1.5,
-  zIndex = 9999,
-  showDVD = false,
+    mouseSize = 150,
+    speedMultiplier = 1.5,
+    zIndex = 9999,
+    showDVD = false,
 }) {
+    const canvasRef = useRef(null);
 
-    //simple and fun dvd animation of my logo bounceing around
-  const canvasRef = useRef(null);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
 
-  
+        img.src = MouseLogo;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    const img = new Image();
-    img.src = MouseLogo;
+        // Smaller logo on mobile
+        const actualMouseSize =
+            window.innerWidth <= 900
+                ? 90
+                : mouseSize;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+        let x = Math.floor(
+            Math.random() * (canvas.width - actualMouseSize)
+        );
 
-    
-    let x = Math.floor(Math.random() * (canvas.width - mouseSize));
-    let y = Math.floor(Math.random() * (canvas.height - mouseSize));
+        let y = Math.floor(
+            Math.random() * (canvas.height - actualMouseSize)
+        );
 
-    let xspeed = speedMultiplier * (Math.random() < 0.5 ? 1 : -1);
-    let yspeed = speedMultiplier * (Math.random() < 0.5 ? 1 : -1);
+        let xspeed =
+            speedMultiplier * (Math.random() < 0.5 ? 1 : -1);
 
-    let frameId;
+        let yspeed =
+            speedMultiplier * (Math.random() < 0.5 ? 1 : -1);
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, x, y, mouseSize, mouseSize);
+        let frameId;
 
-      
-      if (x >= canvas.width - mouseSize) xspeed = -Math.abs(xspeed);
-      if (x <= 0) xspeed = Math.abs(xspeed);
-      if (y >= canvas.height - (mouseSize - 10)) yspeed = -Math.abs(yspeed);
-      if (y <= -20) yspeed = Math.abs(yspeed);
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      x += xspeed;
-      y += yspeed;
+            ctx.drawImage(
+                img,
+                x,
+                y,
+                actualMouseSize,
+                actualMouseSize
+            );
 
-      frameId = requestAnimationFrame(animate);
-    }
+            if (x >= canvas.width - actualMouseSize) {
+                xspeed = -Math.abs(xspeed);
+            }
 
-    frameId = requestAnimationFrame(animate);
+            if (x <= 0) {
+                xspeed = Math.abs(xspeed);
+            }
 
-    
-    function handleResize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", handleResize);
+            if (y >= canvas.height - (actualMouseSize - 10)) {
+                yspeed = -Math.abs(yspeed);
+            }
 
+            if (y <= -20) {
+                yspeed = Math.abs(yspeed);
+            }
 
-    return () => {
-      cancelAnimationFrame(frameId); 
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [mouseSize, speedMultiplier]);
+            x += xspeed;
+            y += yspeed;
 
-  return (
-    <canvas
-      ref={canvasRef}
-      id="DVDFun"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: zIndex,
-        pointerEvents: "none",
-        display: showDVD ? "block" : "none",
-      }}
-    />
-  );
+            frameId = requestAnimationFrame(animate);
+        }
+
+        frameId = requestAnimationFrame(animate);
+
+        function handleResize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            cancelAnimationFrame(frameId);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [mouseSize, speedMultiplier]);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            id="DVDFun"
+            style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: zIndex,
+                pointerEvents: "none",
+                display: showDVD ? "block" : "none",
+            }}
+        />
+    );
 }
