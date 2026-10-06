@@ -80,7 +80,7 @@ body {
 
 .name h1 {
     margin: 0;
-    font-size: 70px;
+    font-size: 4vw;
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: 4px;
@@ -143,18 +143,19 @@ body {
     border: none;
 }
 
-.options{
-  font-family: 'Orbitron', sans-serif;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
+.options {
+    font-family: 'Orbitron', sans-serif;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .option {
     position: relative;
     display: inline-block;
+    width: fit-content;
 
     text-decoration: none;
     color: #ffffff;
@@ -166,9 +167,7 @@ body {
     font-weight: 700;
     letter-spacing: 2px;
 
-    padding: 5px 0;
-    padding-left: 28px;
-
+    padding: 5px 0 5px 28px;
     cursor: pointer;
 
     transition:
@@ -182,12 +181,14 @@ body {
     content: ">";
     position: absolute;
     left: 0;
-
+    top: 50%;
+    
     color: #c026ff;
     font-size: 32px;
+    line-height: 1;
 
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(-50%) translateX(-10px);
 
     transition:
         opacity 0.3s ease,
@@ -200,9 +201,9 @@ body {
     position: absolute;
 
     left: 28px;
+    right: 0;
     bottom: 0;
 
-    width: calc(100% - 28px);
     height: 2px;
 
     background: linear-gradient(
@@ -235,7 +236,7 @@ body {
 /* Show > */
 .option:hover::before {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 /* Grow underline */
@@ -581,5 +582,350 @@ body {
     color: white;
 }
 
+@media (max-width: 900px) {
 
+    /* Prevent the page from becoming wider than the screen */
+    html,
+    body,
+    #root {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .app {
+        padding: 15px;
+        min-height: 100vh;
+    }
+
+    /* ================= INTRODUCTION ================= */
+
+    .introduction {
+        width: calc(100% - 10px);
+        max-width: none;
+        box-sizing: border-box;
+
+        padding: 15px;
+        margin: 0 auto;
+
+        text-align: left;
+    }
+
+    .intro p {
+        margin: 0 0 8px 2px;
+
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .name h1 {
+        font-size: clamp(38px, 9vw, 60px);
+        line-height: 0.95;
+        letter-spacing: 2px;
+
+        /* Prevent long name from overflowing */
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+
+    .bio {
+        max-width: 100%;
+        margin-top: 12px;
+    }
+
+    .bio p {
+        font-size: 15px;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+    }
+
+    .section-divider {
+        margin: 10px 0;
+    }
+
+
+    /* ================= MENU ================= */
+
+    .options {
+        width: 100%;
+        padding-top: 24vw;
+
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .option {
+        font-size: clamp(45px, 8vw, 58px);
+        letter-spacing: 1px;
+
+        padding: 6px 0;
+    }
+
+    .option::before {
+        display: none;
+    }
+
+    .option::after {
+        left: 0px;
+        width: 100%;
+    }
+
+    /*
+       Disable the large desktop-style movement on touch devices.
+       The hover effect can otherwise feel strange on phones.
+    */
+    .option:hover {
+        transform: none;
+    }
+
+    .option:active {
+        color: #f0abfc;
+
+        text-shadow:
+            0 0 5px rgba(255, 255, 255, 0.8),
+            0 0 12px rgba(217, 70, 239, 0.8),
+            0 0 25px rgba(168, 85, 247, 0.5);
+
+        transform: scale(1.03);
+    }
+
+
+    /* ================= DVD BUTTON ================= */
+
+    .DVDButton {
+        width: 30px;
+        height: 30px;
+    }
+
+
+    /* ================= OFFCANVAS ================= */
+
+    .offcanvas.options-tabs {
+        width: 100vw !important;
+        max-width: 100vw !important;
+
+        background-color: rgba(1, 0, 2, 0.95) !important;
+    }
+
+    .options-tabs .offcanvas-header {
+        padding: 15px;
+    }
+
+    .options-tabs .offcanvas-title.gradient {
+        font-size: 24px;
+    }
+
+    .options-tabs .offcanvas-body {
+        padding: 15px;
+    }
+
+
+    /* ================= PROJECT CARDS ================= */
+
+    .project-popout-button .card {
+        width: 100%;
+        box-sizing: border-box;
+
+        border-width: 1px;
+    }
+
+    .project-popout-button:hover .card {
+        /*
+           Don't enlarge cards on mobile.
+        */
+        transform: none;
+    }
+
+    .project-popout-button .card-title {
+        font-size: 20px;
+    }
+
+    .project-popout-button .card-text {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+
+    /* ================= IMAGES ================= */
+
+    .options-tabs .offcanvas-body .displayimg {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+
+        margin: 10px auto;
+    }
+
+    .options-tabs .offcanvas-body .displayimgsmall {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+
+        margin: 10px auto;
+    }
+
+
+    /* ================= BUTTONS ================= */
+
+    .link-btn-wrapper {
+        flex-wrap: wrap;
+        gap: 10px;
+
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .link-btn.btn {
+        font-size: 13px;
+        padding: 7px 12px;
+    }
+
+    .link-btn.btn i {
+        font-size: 16px;
+    }
+
+    .programlangbox {
+        gap: 8px;
+    }
+
+
+    /* ================= CONTACT ================= */
+
+    .contact-box {
+        gap: 15px;
+
+        margin: 20px 5px;
+        margin-left: 5px;
+
+        align-items: center;
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+
+        flex-shrink: 0;
+    }
+
+    .contact-icon::before {
+        width: 56px;
+        height: 51px;
+    }
+
+    .contact-icon::after {
+        width: 50px;
+        height: 45px;
+    }
+
+    .contact-icon i {
+        font-size: 23px;
+    }
+
+    .contact-box .contact-info {
+        font-size: 16px;
+        padding: 5px;
+
+        min-width: 0;
+    }
+
+    .contact-box .contact-title {
+        font-size: 22px;
+        margin-bottom: 3px;
+    }
+
+    .contact-box .contact-text {
+        font-size: 16px;
+
+        /*
+           Allows long email addresses/links to wrap
+           instead of pushing the page sideways.
+        */
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .introduction {
+        padding: 12px;
+        background: #7405fc54;
+    }
+
+    .intro p {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .name h1 {
+        font-size: 34px;
+        letter-spacing: 1px;
+    }
+
+    .bio p {
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    .options {
+        padding-top: 25px;
+        gap: 8px;
+    }
+
+    .option {
+        font-size: 10vw;
+        
+    }
+
+    .option::before {
+        font-size: 22px;
+    }
+
+    .option::after {
+        left: 24px;
+        width: calc(100% - 24px);
+    }
+
+    .contact-box {
+        gap: 10px;
+    }
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .contact-icon::before {
+        width: 49px;
+        height: 44px;
+    }
+
+    .contact-icon::after {
+        width: 43px;
+        height: 38px;
+    }
+
+    .contact-icon i {
+        font-size: 20px;
+    }
+
+    .contact-box .contact-title {
+        font-size: 19px;
+    }
+
+    .contact-box .contact-text {
+        font-size: 14px;
+    }
+}
 
