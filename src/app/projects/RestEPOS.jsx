@@ -3,7 +3,7 @@
 export default function RestEPOS(){
     return(
         <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Restaurant-EPOS-System">
-                <div className="offcanvas-header">
+                <div className="offcanvas-header gradient">
                     <h5>Restaurant EPOS System</h5>
                     <button type="button" className="btn-close" data-bs-toggle="offcanvas"
                     data-bs-target="#Projects"

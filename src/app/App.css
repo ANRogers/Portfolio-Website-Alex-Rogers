@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 html,
 body,
@@ -76,7 +77,7 @@ body {
 }
 
 
-/* Large name */
+
 .name h1 {
     margin: 0;
     font-size: 70px;
@@ -86,14 +87,7 @@ body {
 
     text-transform: uppercase;
 
-    /* Gradient */
-    background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f0abfc 35%,
-        #d946ef 65%,
-        #a855f7 100%
-    );
+    
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -136,6 +130,17 @@ body {
     margin: 10px 0;
     opacity: 1;
     width: 100%;
+}
+
+.DVDButton{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
 }
 
 .options{
@@ -364,6 +369,8 @@ body {
     object-fit: contain;
 }
 
+
+
 .options-tabs .offcanvas-body .displayimgsmall {
     display: block;
     height: auto;
@@ -439,9 +446,140 @@ body {
     flex-wrap: wrap;
 }
 
+.gradient{
+  outline: none;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    #8B2CFF 0%,
+    #FF00D4 25%,
+    #00BFFF 50%,
+    #FF00D4 75%,
+    #8B2CFF 100%
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  animation: animate 10s linear infinite;
+}
+@keyframes animate {
+  to{
+    background-position: 400%;
+  }
+}
+
+.offcanvas-title.gradient{
+    font-size: 30px;
+}
 
 
+/* contact page */
+.contact-box{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 20px auto;
+    margin-left: 50px;
+    
+}
 
+.contact-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gradient hexagon border */
+.contact-icon::before {
+    content: "";
+    position: absolute;
+    width: 66px;
+    height: 60px;
+
+    background: linear-gradient(
+        135deg,
+        #8B2CFF 0%,
+        #FF00D4 25%,
+        #00BFFF 50%,
+        #FF00D4 75%,
+        #8B2CFF 100%
+    );
+
+    background-size: 400%;
+    animation: animate 10s linear infinite;
+
+    clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 50%,
+        75% 100%,
+        25% 100%,
+        0% 50%
+    );
+
+    filter:
+        drop-shadow(0 0 5px #8B2CFF)
+        drop-shadow(0 0 10px #FF00D4);
+}
+
+/* Cut out the middle to create the border */
+.contact-icon::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 54px;
+
+    background: #0d0221;
+
+    clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 50%,
+        75% 100%,
+        25% 100%,
+        0% 50%
+    );
+}
+
+.contact-icon i {
+    position: relative;
+    z-index: 2;
+
+    display: block;
+    font-size: 28px;
+
+    -webkit-text-fill-color:  #d05bff;
+}
+/* .contact-box .contact-icon{
+    font-size: 50px;
+    padding: 10px;
+  text-align: center;
+  border: solid;
+} */
+
+.contact-box .contact-info{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.contact-box .contact-title{
+    font-size: 30px;
+    font-weight: 600;
+    color: #d05bff;
+    text-transform: uppercase;
+}
+
+.contact-box .contact-text{
+    font-size: 20px;
+}
+
+.contact-text .contact-link{
+    text-decoration: none;
+    color: white;
+}
 
 
 

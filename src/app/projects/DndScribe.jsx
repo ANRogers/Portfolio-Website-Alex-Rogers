@@ -3,11 +3,12 @@ import scribeStart from '../../assets/DNDscribe/StartScribe.PNG'
 import scribeEnd from '../../assets/DNDscribe/ScribeEnd.PNG'
 import scribeTranscript from '../../assets/DNDscribe/ScribeTranscript.PNG'
 import summeriseText from '../../assets/DNDscribe/SummeriseText.PNG'
+import SessionSummery from '../../assets/DNDscribe/SessionSummery.PNG'
 
 export default function DndScribeContent() {
     return(
     <div className="offcanvas offcanvas-end options-tabs" tabIndex="-1" id="Discord-Voice-Transcription">
-        <div className="offcanvas-header">
+        <div className="offcanvas-header gradient">
             <h5>Discord Voice Transcription & Summary Bot</h5>
             <button type="button" className="btn-close" data-bs-toggle="offcanvas"
             data-bs-target="#Projects"
@@ -16,10 +17,10 @@ export default function DndScribeContent() {
         <div className="offcanvas-body">
             <div className='programlangbox'>
                 <div className="btn link-btn">
-                    <i class="fa-brands fa-node"></i> Node.js
+                    <i className="fa-brands fa-node"></i> Node.js
                 </div>
                 <div className="btn link-btn">
-                    <i class="fa-brands fa-python"></i> Python
+                    <i className="fa-brands fa-python"></i> Python
                 </div>
             </div>
             A Discord bot built with Node.js and Python that transcribes each speaker's voice separately during D&D sessions, 
@@ -66,6 +67,8 @@ export default function DndScribeContent() {
             During this process, the bot also checks for any new characters, items, or locations mentioned in the session that do not already have notes. When new entries are found, the bot automatically creates notes for them using information gathered from the transcription. This keeps the campaign's documentation up to date while reducing the amount of manual note-taking required.
 
             <img src={summeriseText} className='displayimg'/>
+
+            <img src={SessionSummery} className='displayimg'/>
 
             <div className="link-btn-wrapper">
             <a
