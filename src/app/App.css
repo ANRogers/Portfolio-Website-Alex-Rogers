@@ -696,6 +696,9 @@ body {
     .DVDButton {
         width: 30px;
         height: 30px;
+        left: 50%;
+        top: 90%;
+        transform: translate(-50%, -50%);
     }
 
 
