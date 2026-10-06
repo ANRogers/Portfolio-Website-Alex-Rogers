@@ -71,14 +71,14 @@ export default function DndScribeContent() {
             <img src={SessionSummery} className='displayimg'/>
 
             <div className="link-btn-wrapper">
-            <a
-            href="https://github.com/ANRogers/DndScribe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn link-btn"
-            >
-            <i className="bi bi-github"></i> View on GitHub
-            </a>
+                <a
+                href="https://github.com/ANRogers/DndScribe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn link-btn"
+                >
+                <i className="bi bi-github"></i> View on GitHub
+                </a>
             </div>
         </div>
     </div>
