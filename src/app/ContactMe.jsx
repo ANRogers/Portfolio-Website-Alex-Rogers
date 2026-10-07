@@ -29,7 +29,7 @@ export default function ContactMe(){
                 <div>
                     <p>
                         Have a project in mind, a question, or just want to say hi? <br />
-                        Feel free to get in touch. Ill do my besyt to get back with you as soon as possible. 
+                        Feel free to get in touch. Ill do my best to get back with you as soon as possible. 
                     </p>
 
                     <div className="contact-box">
