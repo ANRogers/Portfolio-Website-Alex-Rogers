@@ -101,6 +101,17 @@ export default function RestEPOS(){
                     that employees only had access to the functionality required for their role.
                 </p>
 
+                <div className="link-btn-wrapper">
+                    <a
+                    href="https://github.com/ANRogers/Horizon-Restaurants-EPOS"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn link-btn"
+                    >
+                    <i className="bi bi-github"></i> View on GitHub
+                    </a>
+                </div>
+
             </div>
         </div>
 )
