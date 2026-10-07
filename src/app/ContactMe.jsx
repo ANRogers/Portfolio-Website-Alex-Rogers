@@ -74,8 +74,8 @@ export default function ContactMe(){
 
                     <div className="link-btn-wrapper">
                         <a 
-                        href="/AlexRogersCV.docx" 
-                        download="Alex_Rogers_CV.docx"
+                        href="/AlexRogersCV.pdf" 
+                        download="AlexRogersCV.pdf"
                         className="btn link-btn">
                             <i className="fa-solid fa-file-lines"></i> Download CV
                         </a>
