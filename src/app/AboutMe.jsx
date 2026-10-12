@@ -1,3 +1,5 @@
+import me from "../assets/me_suit.jpg"
+
 
 export default function AboutMe(){
     return(
@@ -25,6 +27,7 @@ export default function AboutMe(){
 
             <div className="offcanvas-body">
                 <div>
+                    <img src={me} className='about-me-img'/>
                     <p> I'm Alex, a Computer Science graduate with a strong interest in software development, 
                         web development, and creating digital experiences. I enjoy building things from the ground 
                         up and finding practical ways to turn ideas into working projects. Whether I'm developing 
