@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { Analytics } from "@vercel/analytics/next"
 
 import TriangleBackground from './Background.jsx'
 import SunBackground from './Sun.jsx'
@@ -11,6 +12,7 @@ function App() {
   const [showDVD, setShowDVD] = useState(false);
   return (
     <div className="app">
+      <Analytics/>
       <MouseDVDBackground showDVD={showDVD} />
       <div className='background'>
         <TriangleBackground />
