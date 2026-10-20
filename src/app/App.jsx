@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 import TriangleBackground from './Background.jsx'
 import SunBackground from './Sun.jsx'
