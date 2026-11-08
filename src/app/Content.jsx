@@ -9,6 +9,7 @@ import RestEPOS from "./projects/RestEPOS.jsx";
 import AboutMe from "./AboutMe.jsx";
 import ContactMe from "./ContactMe.jsx";
 import Projects from "./Projects.jsx";
+import MousePadContent from "./projects/MousePad.jsx";
 
 
 
@@ -87,6 +88,8 @@ export default function Content({setShowDVD}) {
                 <Projects />
 
                 {/* Individual Project Offcanvas */}
+                {/* ========= MousePad Task Orginiser Application ========= */}
+                <MousePadContent />
 
                 {/* ========= Discord Voice transcription & Summary Bot ========= */}
                 <DndScribeContent />

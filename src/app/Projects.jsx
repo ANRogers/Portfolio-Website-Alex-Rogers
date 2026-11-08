@@ -3,6 +3,7 @@ import DndScribe from '../assets/DND_Scribe.PNG';
 import UniHub from '../assets/UniHub.PNG'
 import RestaurantThumbnail from '../assets/UWERestarunt.PNG'
 import EPOSThumbnail from '../assets/ResturantEPOSThumbnail.PNG'
+import MousePadThumbnail from '../assets/MousePad.PNG'
 
 
 
@@ -32,6 +33,27 @@ export default function Projects(){
 
         <div className="offcanvas-body">
             <div>
+                {/* ========= MousePad Task Orginiser Application ========= */}
+
+                <button className="project-popout-button" data-bs-toggle="offcanvas" data-bs-target="#Mouse-Pad-Task-Orginiser">
+                    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+                    <div className="row g-0">
+                        <div className="col-md-4">
+                        <img src={MousePadThumbnail} className="img-fluid rounded-start" alt="MousePad Task Organiser" />
+                        </div>
+                            <div className="col-md-8">
+                            <div className="card-body">
+                                <h5 className="card-title">MousePad - Task Organiser Application</h5>
+                                <p className="card-text">
+                                    A desktop task organiser that manages recurring tasks, 
+                                    organises workspaces and tracks productivity using React, 
+                                    TypeScript and SQLite.
+                                </p>
+                            </div>
+                            </div>
+                    </div>
+                    </div>
+                </button>
 
                 {/* ========= Discord Voice transcription & Summary Bot ========= */}
 
@@ -131,15 +153,6 @@ export default function Projects(){
                 </div>
                 </div>
                 </button>
-
-
-                
-
-                
-
-                
-
-                
 
             </div>
         </div>
