@@ -1,6 +1,9 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { io } from 'socket.io-client';
 import './TranscriptViewer.css';
+
+const API_URL = import.meta.env.VITE_TRANSCRIPT_API_URL;
 
 function TranscriptViewer() {
     const [guilds, setGuilds] = useState([]);
@@ -10,12 +13,18 @@ function TranscriptViewer() {
     const [status, setStatus] = useState('Connecting...');
 
     const logRef = useRef(null);
+    const selectedGuildRef = useRef('');
 
-    // Load available servers
+    // Keep track of the currently selected server
+    useEffect(() => {
+        selectedGuildRef.current = selectedGuildId;
+    }, [selectedGuildId]);
+
+    // Load available Discord servers
     useEffect(() => {
         async function loadServers() {
             try {
-                const response = await fetch('/api/guilds');
+                const response = await fetch(`${API_URL}/api/guilds`);
 
                 if (!response.ok) {
                     throw new Error('Failed to load servers');
@@ -31,19 +40,22 @@ function TranscriptViewer() {
         loadServers();
     }, []);
 
-    // Load transcript when selected server changes
+    // Load transcript history when a server is selected
     useEffect(() => {
         if (!selectedGuildId) {
             setEntries([]);
             return;
         }
 
+        let cancelled = false;
+
         async function loadTranscript() {
             setLoading(true);
+            setEntries([]);
 
             try {
                 const response = await fetch(
-                    `/api/transcript/${selectedGuildId}`
+                    `${API_URL}/api/transcript/${selectedGuildId}`
                 );
 
                 if (!response.ok) {
@@ -51,33 +63,68 @@ function TranscriptViewer() {
                 }
 
                 const data = await response.json();
-                setEntries(data);
+
+                if (!cancelled) {
+                    setEntries(data);
+                }
             } catch (error) {
                 console.error('Could not load transcript:', error);
-                setEntries([]);
+
+                if (!cancelled) {
+                    setEntries([]);
+                }
             } finally {
-                setLoading(false);
+                if (!cancelled) {
+                    setLoading(false);
+                }
             }
         }
 
         loadTranscript();
+
+        return () => {
+            cancelled = true;
+        };
     }, [selectedGuildId]);
 
-    // Automatically scroll when new entries are added
+    // Connect to the Express Socket.IO server
+    useEffect(() => {
+        const socket = io(API_URL);
+
+        socket.on('connect', () => {
+            setStatus('Live');
+        });
+
+        socket.on('disconnect', () => {
+            setStatus('Disconnected');
+        });
+
+        socket.on('connect_error', (error) => {
+            console.error('Socket connection error:', error);
+            setStatus('Connection error');
+        });
+
+        // Listen for new transcript entries
+        socket.on('newEntry', ({ guildId, entry }) => {
+            if (guildId !== selectedGuildRef.current) return;
+
+            setEntries(current => [...current, entry]);
+        });
+
+        return () => {
+            socket.disconnect();
+        };
+    }, []);
+
+    // Scroll to the latest transcript entry
     useEffect(() => {
         const log = logRef.current;
 
-        if (!log) return;
-
-        const nearBottom =
-            log.scrollHeight - log.scrollTop - log.clientHeight < 40;
-
-        if (nearBottom) {
+        if (log) {
             log.scrollTop = log.scrollHeight;
         }
     }, [entries]);
 
-    // Display transcript entries
     function renderEntry(entry, index) {
         const time = new Date(entry.timestamp).toLocaleTimeString([], {
             hour: '2-digit',
