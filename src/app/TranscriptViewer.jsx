@@ -1,11 +1,9 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import './TranscriptViewer.css';
 
 //const API_URL = import.meta.env.VITE_TRANSCRIPT_API_URL;
-const API_URL = import.meta.env.DEV ? 'http://localhost:3000' : import.meta.env.VITE_TRANSCRIPT_API_URL; 
-
+const API_URL = import.meta.env.DEV ? 'http://localhost:3000' : import.meta.env.VITE_TRANSCRIPT_API_URL;
 
 function TranscriptViewer() {
     const [guilds, setGuilds] = useState([]);
@@ -18,6 +16,8 @@ function TranscriptViewer() {
 
     const logRef = useRef(null);
     const selectedGuildRef = useRef('');
+    // True while the user is at (or near) the bottom of the log
+    const stickToBottomRef = useRef(true);
 
     // Keep track of the currently selected server
     useEffect(() => {
@@ -48,16 +48,15 @@ function TranscriptViewer() {
     useEffect(() => {
         if (!selectedGuildId) {
             setEntries([]);
-          
             return;
         }
 
         let cancelled = false;
 
         async function loadTranscript() {
+            stickToBottomRef.current = true; // start at the bottom for a new server
             setLoading(true);
             setEntries([]);
-            
 
             try {
                 const response = await fetch(
@@ -84,11 +83,7 @@ function TranscriptViewer() {
                     setLoading(false);
                 }
             }
-
-            
         }
-
-        
 
         loadTranscript();
 
@@ -97,17 +92,21 @@ function TranscriptViewer() {
         };
     }, [selectedGuildId]);
 
-    const users = Array.from(new Map(entries.map(entry => [entry.userId, {id: entry.userId, name: entry.speaker}])).values());
+    const users = Array.from(
+        new Map(
+            entries.map(entry => [entry.userId, { id: entry.userId, name: entry.speaker }])
+        ).values()
+    );
 
     const userFilteredEntries = selectedUserId
-    ? entries.filter(entry => entry.userId == selectedUserId) : entries;
+        ? entries.filter(entry => entry.userId == selectedUserId)
+        : entries;
 
     const filteredEntries = searchFilter
-    ? userFilteredEntries.filter(entry => entry.text.toLowerCase().includes(searchFilter.toLowerCase())) : userFilteredEntries;
-
-    
-    
-
+        ? userFilteredEntries.filter(entry =>
+            entry.text.toLowerCase().includes(searchFilter.toLowerCase())
+        )
+        : userFilteredEntries;
 
     // Connect to the Express Socket.IO server
     useEffect(() => {
@@ -138,14 +137,23 @@ function TranscriptViewer() {
         };
     }, []);
 
-    // Scroll to the latest transcript entry
+    // Track whether the user is near the bottom of the log
+    function handleScroll() {
+        const log = logRef.current;
+        if (!log) return;
+
+        const distanceFromBottom = log.scrollHeight - log.scrollTop - log.clientHeight;
+        stickToBottomRef.current = distanceFromBottom < 80; // within 80px counts as "at the bottom"
+    }
+
+    // Only auto-scroll if the user hasn't scrolled up to read earlier lines
     useEffect(() => {
         const log = logRef.current;
 
-        if (log) {
+        if (log && stickToBottomRef.current) {
             log.scrollTop = log.scrollHeight;
         }
-    }, [entries]);
+    }, [entries, filteredEntries.length]);
 
     function renderEntry(entry, index) {
         const time = new Date(entry.timestamp).toLocaleTimeString([], {
@@ -224,9 +232,7 @@ function TranscriptViewer() {
                 </select>
             </div>
 
-            
-
-            <div className="log" ref={logRef}>
+            <div className="log" ref={logRef} onScroll={handleScroll}>
                 {!selectedGuildId ? (
                     <div className="empty-state">
                         Select a server to view its transcript.
