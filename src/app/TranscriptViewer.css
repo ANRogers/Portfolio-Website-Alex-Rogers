@@ -40,21 +40,86 @@
     box-shadow: 0 0 8px #4fd1c580;
 }
 
+/* Shared styling for both selects */
 .page select {
     width: 100%;
-    padding: 12px 14px;
+    padding: 12px 36px 12px 14px; /* right padding leaves room for the arrow */
     margin-bottom: 16px;
+    border: 1px solid var(--border, #262c36);
+    border-radius: 8px;
+    background-color: #12151a;
+    color: var(--text, #e4e6eb);
+    font: inherit;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%237a828e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.page select:hover,
+.page select:focus {
+    outline: none;
+    border-color: var(--accent, #4fd1c5);
+}
+
+.page select option {
+    background: #12151a;
+    color: var(--text, #e4e6eb);
+}
+
+.filter-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Search bar: grows to fill the row */
+.filter-box .search-wrap {
+    position: relative;
+    flex: 1;
+}
+
+.filter-box .search-wrap i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted, #7a828e);
+    pointer-events: none;
+}
+
+.filter-box .search-wrap input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px 12px 40px;
     border: 1px solid var(--border, #262c36);
     border-radius: 8px;
     background: #12151a;
     color: var(--text, #e4e6eb);
     font: inherit;
-    cursor: pointer;
 }
 
-.page select:focus {
+.filter-box .search-wrap input::placeholder {
+    color: var(--muted, #7a828e);
+}
+
+.filter-box .search-wrap input:focus {
     outline: none;
     border-color: var(--accent, #4fd1c5);
+}
+
+.filter-box .search-wrap:focus-within i {
+    color: var(--accent, #4fd1c5);
+}
+
+/* User select: fixed, smaller width */
+.filter-box select {
+    width: 160px;
+    flex-shrink: 0;
+    margin-bottom: 0;
 }
 
 .log {

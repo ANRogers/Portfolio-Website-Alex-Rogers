@@ -3,14 +3,18 @@ import { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import './TranscriptViewer.css';
 
-const API_URL = import.meta.env.VITE_TRANSCRIPT_API_URL;
+//const API_URL = import.meta.env.VITE_TRANSCRIPT_API_URL;
+const API_URL = import.meta.env.DEV ? 'http://localhost:3000' : import.meta.env.VITE_TRANSCRIPT_API_URL; 
+
 
 function TranscriptViewer() {
     const [guilds, setGuilds] = useState([]);
     const [selectedGuildId, setSelectedGuildId] = useState('');
+    const [selectedUserId, setSelectedUserId] = useState('');
     const [entries, setEntries] = useState([]);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState('Connecting...');
+    const [searchFilter, setSearchFilter] = useState('');
 
     const logRef = useRef(null);
     const selectedGuildRef = useRef('');
@@ -18,7 +22,7 @@ function TranscriptViewer() {
     // Keep track of the currently selected server
     useEffect(() => {
         selectedGuildRef.current = selectedGuildId;
-    }, [selectedGuildId]);
+    }, [selectedGuildId, selectedUserId]);
 
     // Load available Discord servers
     useEffect(() => {
@@ -44,6 +48,7 @@ function TranscriptViewer() {
     useEffect(() => {
         if (!selectedGuildId) {
             setEntries([]);
+          
             return;
         }
 
@@ -52,6 +57,7 @@ function TranscriptViewer() {
         async function loadTranscript() {
             setLoading(true);
             setEntries([]);
+            
 
             try {
                 const response = await fetch(
@@ -78,7 +84,11 @@ function TranscriptViewer() {
                     setLoading(false);
                 }
             }
+
+            
         }
+
+        
 
         loadTranscript();
 
@@ -86,6 +96,18 @@ function TranscriptViewer() {
             cancelled = true;
         };
     }, [selectedGuildId]);
+
+    const users = Array.from(new Map(entries.map(entry => [entry.userId, {id: entry.userId, name: entry.speaker}])).values());
+
+    const userFilteredEntries = selectedUserId
+    ? entries.filter(entry => entry.userId == selectedUserId) : entries;
+
+    const filteredEntries = searchFilter
+    ? userFilteredEntries.filter(entry => entry.text.toLowerCase().includes(searchFilter.toLowerCase())) : userFilteredEntries;
+
+    
+    
+
 
     // Connect to the Express Socket.IO server
     useEffect(() => {
@@ -177,6 +199,33 @@ function TranscriptViewer() {
                 ))}
             </select>
 
+            <div className="filter-box">
+                <div className="search-wrap">
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                    <input
+                        type="text"
+                        placeholder="Search Transcript"
+                        value={searchFilter}
+                        onChange={(event) => setSearchFilter(event.target.value)}
+                    />
+                </div>
+
+                <select
+                    value={selectedUserId}
+                    onChange={(event) => setSelectedUserId(event.target.value)}
+                >
+                    <option value="">All Users</option>
+
+                    {users.map((user) => (
+                        <option key={user.id} value={user.id}>
+                            {user.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            
+
             <div className="log" ref={logRef}>
                 {!selectedGuildId ? (
                     <div className="empty-state">
@@ -191,7 +240,7 @@ function TranscriptViewer() {
                         Nothing transcribed yet. Start talking in voice chat.
                     </div>
                 ) : (
-                    entries.map(renderEntry)
+                    filteredEntries.map(renderEntry)
                 )}
             </div>
         </div>
